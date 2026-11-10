@@ -1,0 +1,68 @@
+name: Build modpack
+
+# Manual only: the pack is rebuilt when you say so, not on every push.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Pack version (blank = the one in pack/manifest.json)"
+        required: false
+        type: string
+      own_from:
+        description: "Where our own mods come from"
+        required: true
+        default: github
+        type: choice
+        options: [github, local]
+      release:
+        description: "Also attach the .mrpack to a GitHub release"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Build the .mrpack
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python tools/build_mrpack.py \
+            --own-from "${{ inputs.own_from }}" \
+            ${{ inputs.version && format('--version {0}', inputs.version) || '' }}
+
+      - name: Name the artifact
+        id: pack
+        run: |
+          file=$(ls dist/*.mrpack | head -1)
+          echo "file=$file" >> "$GITHUB_OUTPUT"
+          echo "name=$(basename "$file")" >> "$GITHUB_OUTPUT"
+          echo "version=$(python -c "import json;print(json.load(open('pack/manifest.json'))['pack_version'])")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.pack.outputs.name }}
+          path: ${{ steps.pack.outputs.file }}
+          if-no-files-found: error
+
+      - name: Attach to a release
+        if: ${{ inputs.release }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="pack-${{ inputs.version || steps.pack.outputs.version }}"
+          gh release view "$tag" >/dev/null 2>&1 \
+            && gh release upload "$tag" "${{ steps.pack.outputs.file }}" --clobber \
+            || gh release create "$tag" "${{ steps.pack.outputs.file }}" \
+                 --title "GoH pack $tag" \
+                 --notes "Import the .mrpack in the Modrinth App or Prism Launcher."

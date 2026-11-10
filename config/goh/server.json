@@ -1,0 +1,12 @@
+{
+  "serverName": "GoH",
+  "welcome": [
+    "A vanilla survival server with a few quality-of-life additions.",
+    "Be kind, build big, and leave the spawn area tidy."
+  ],
+  "website": "https://goh.omeldar.com/minecraft",
+  "modpackUrl": "https://goh.omeldar.com/minecraft",
+  "waypointSharing": true,
+  "maxWaypointsPerPlayer": 50,
+  "maxWaypointsTotal": 1000
+}
