@@ -26,8 +26,9 @@ shaderpack, and asks Modrinth which version each hash belongs to. The result is
 | **ours** | One of our mods (matched by the prefixes in `pack.json`). Bundled into the pack. |
 | **unmatched** | Modrinth does not know it and it isn't ours. Needs a decision — see below. |
 
-`.disabled` files are skipped, so disabling a mod in the launcher takes it out of the
-pack. Commit `pack/manifest.json` when you're happy with it: that file *is* the pack
+A mod you disabled in the launcher ships disabled (Axiom), so players can switch it
+on; anything matching `exclude` in `pack.json` (WorldEdit) never ships at all. That is
+the same curation the website's mod list applies. Commit `pack/manifest.json` when you're happy with it: that file *is* the pack
 definition, and a diff on it shows exactly what changed between pack versions.
 
 As of the last sync: **82 from Modrinth, 4 ours, 0 unmatched.**

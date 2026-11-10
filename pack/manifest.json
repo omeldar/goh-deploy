@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-10T18:47:31+00:00",
-  "pack_version": "1.0.0",
+  "generated": "2026-11-10T19:47:34+00:00",
+  "pack_version": "1.1.0",
   "dependencies": {
     "minecraft": "1.21.11",
     "fabric-loader": "0.19.3"
@@ -60,6 +60,20 @@
       "env": {
         "client": "required",
         "server": "unsupported"
+      }
+    },
+    {
+      "path": "mods/Axiom-5.2.1-for-MC1.21.11.jar.disabled",
+      "project_id": "N6n5dqoA",
+      "version_id": "M0Jr2ivY",
+      "version_number": "5.2.1",
+      "url": "https://cdn.modrinth.com/data/N6n5dqoA/versions/M0Jr2ivY/Axiom-5.2.1-for-MC1.21.11.jar",
+      "sha1": "ce0c5309e4e8972c58de55e1776e39383581649b",
+      "sha512": "00be4c7e6652d8f36855b222effa19a23a532659da932b4321f4f786f169be3d98977e3d4271deb6b415f4692eb87d9a8fd78295a55bbe887771302e64bb1c58",
+      "size": 44226590,
+      "env": {
+        "client": "required",
+        "server": "required"
       }
     },
     {
@@ -928,20 +942,6 @@
       "env": {
         "client": "required",
         "server": "unsupported"
-      }
-    },
-    {
-      "path": "mods/worldedit-mod-7.4.0.jar",
-      "project_id": "1u6JkXh5",
-      "version_id": "o645q0Oo",
-      "version_number": "7.4.0",
-      "url": "https://cdn.modrinth.com/data/1u6JkXh5/versions/o645q0Oo/worldedit-mod-7.4.0.jar",
-      "sha1": "1bb1f8ade981e1e388cb9f114fa515c2294e0019",
-      "sha512": "1ad3e994cd314e50e561281a77696107dbd7124fcec8e9e0c0d4043fa081840ef8087aaec99cacde6b6270ff283a8d3c7ea5c113558524468f8c58e5e13f9a4a",
-      "size": 6944007,
-      "env": {
-        "client": "required",
-        "server": "required"
       }
     },
     {

@@ -77,8 +77,11 @@ def collect(instance: Path, scan: dict[str, list[str]], exclude: list[str]) -> l
             print(f"  ! {folder}/ not found in the instance, skipped")
             continue
         for f in sorted(d.iterdir()):
-            if not f.is_file() or f.suffix.lower() not in suffixes:
-                continue  # skips .disabled, .txt, directories
+            # "x.jar" and "x.jar.disabled" both count: a mod you switched off in
+            # the launcher ships switched off, so the player can turn it on.
+            name = f.name.lower().removesuffix(".disabled")
+            if not f.is_file() or not name.endswith(tuple(suffixes)):
+                continue  # .txt, directories, anything else
             rel = f"{folder}/{f.name}"
             if any(fnmatch.fnmatch(f.name, pat) for pat in exclude):
                 print(f"  - excluded: {rel}")

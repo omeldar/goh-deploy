@@ -1,6 +1,6 @@
 {
   "name": "GoH",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "summary": "The Guardians of Heaven modpack: the server's own mods plus the client set we all play with.",
   "instance": "C:/Users/akotami/AppData/Roaming/ModrinthApp/profiles/GOH - 1.21.11 v1 1.0.0",
   "dependencies": {
@@ -8,15 +8,52 @@
     "fabric-loader": "0.19.3"
   },
   "scan": {
-    "mods": [".jar"],
-    "resourcepacks": [".zip"],
-    "shaderpacks": [".zip"]
+    "mods": [
+      ".jar"
+    ],
+    "resourcepacks": [
+      ".zip"
+    ],
+    "shaderpacks": [
+      ".zip"
+    ]
   },
+  "exclude": [
+    "worldedit-*"
+  ],
   "own": [
-    { "prefix": "goh-",       "repo": "omeldar/goh-mod",       "env": { "client": "required", "server": "required" } },
-    { "prefix": "autopilot-", "repo": "omeldar/goh-autopilot", "env": { "client": "required", "server": "unsupported" } },
-    { "prefix": "lumi-",      "repo": "omeldar/lumi",          "env": { "client": "required", "server": "unsupported" } },
-    { "prefix": "planner-",   "repo": "omeldar/goh-planner",   "env": { "client": "required", "server": "unsupported" } }
+    {
+      "prefix": "goh-",
+      "repo": "omeldar/goh-mod",
+      "env": {
+        "client": "required",
+        "server": "required"
+      }
+    },
+    {
+      "prefix": "autopilot-",
+      "repo": "omeldar/goh-autopilot",
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      }
+    },
+    {
+      "prefix": "lumi-",
+      "repo": "omeldar/lumi",
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      }
+    },
+    {
+      "prefix": "planner-",
+      "repo": "omeldar/goh-planner",
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      }
+    }
   ],
   "overrides": []
 }
